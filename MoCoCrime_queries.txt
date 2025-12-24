@@ -1,6 +1,6 @@
 USE moco_crime;
 
-/* query_takomapark (Provides information on crimes that occured in Takoma Park) */
+/* query_takomapark (This query provides information on crimes that occured in Takoma Park) */
 CREATE OR REPLACE VIEW query_takomapark AS
 SELECT start_date_time AS "Crime Started", 
 end_date_time AS "Crime Ended", 
@@ -19,7 +19,7 @@ WHERE zip_code IN
 		WHERE city = "TAKOMA PARK")
 ORDER BY block_address DESC;
 
-/* query_rcpd (Provides information on crimes that the RCPD was dispatched to) */
+/* query_rcpd (This query provides information on crimes that the RCPD was dispatched to) */
 CREATE OR REPLACE VIEW query_rcpd AS
 SELECT agency_name AS "Police Agency", 
 district_name AS "District", 
@@ -38,7 +38,7 @@ JOIN Police_District
 WHERE agency_name = "RCPD"
 ORDER BY district_name;
 
-/* query_dv (Provides information on crimes that were deemed as drug/narcotic violations) */
+/* query_dv (This query provides information on crimes that were deemed as drug/narcotic violations) */
 CREATE OR REPLACE VIEW query_dv AS
 SELECT crime_name2 AS "Crime Name", 
 start_date_time AS "Crime Occurred",
@@ -57,7 +57,7 @@ JOIN Zip_Code
 	USING (zip_code)
 WHERE crime_name2 = "Drug/Narcotic Violations";
 
-/* query_cas (Provides information on crimes that were deemed as a crime against society) */
+/* query_cas (This query provides information on crimes that were deemed as a crime against society) */
 CREATE OR REPLACE VIEW query_cas AS
 SELECT crime_name1 AS "Crime Name", 
 block_address AS "Address", 
